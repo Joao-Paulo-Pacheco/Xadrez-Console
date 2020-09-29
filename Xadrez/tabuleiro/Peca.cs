@@ -1,10 +1,8 @@
-﻿using System;
-using Xadrez;
-     
-namespace tabuleiro
+﻿namespace tabuleiro
 {
     abstract class Peca
     {
+
         public Posicao posicao { get; set; }
         public Cor cor { get; protected set; }
         public int qteMovimentos { get; protected set; }
@@ -18,7 +16,7 @@ namespace tabuleiro
             this.qteMovimentos = 0;
         }
 
-        public void incrementarMovimento()
+        public void incrementarQteMovimentos()
         {
             qteMovimentos++;
         }
@@ -28,14 +26,12 @@ namespace tabuleiro
             qteMovimentos--;
         }
 
-        public abstract bool[,] movimentosPossiveis();
-
         public bool existeMovimentosPossiveis()
         {
             bool[,] mat = movimentosPossiveis();
-            for(int i=0; i < tab.linhas; i++)
+            for (int i = 0; i < tab.linhas; i++)
             {
-                for(int j=0; j < tab.colunas; j++)
+                for (int j = 0; j < tab.colunas; j++)
                 {
                     if (mat[i, j])
                     {
@@ -51,5 +47,6 @@ namespace tabuleiro
             return movimentosPossiveis()[pos.linha, pos.coluna];
         }
 
+        public abstract bool[,] movimentosPossiveis();
     }
 }
